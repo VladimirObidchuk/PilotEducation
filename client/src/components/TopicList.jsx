@@ -44,14 +44,11 @@ const TopicList = observer(({ currentCours }) => {
               >
                 {filteredTopItem.name}
               </Nav.Link>
-              {isAddChild === true ? (
-                <TopicListItem
-                  childListItem={childListItem}
-                  key={childListItem.id}
-                />
-              ) : (
-                console.log("durack")
-              )}
+              <TopicListItem
+                childListItem={childListItem}
+                key={childListItem.id}
+                eventKey={childListItem.id}
+              />
             </Row>
           );
         })}

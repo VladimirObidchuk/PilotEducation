@@ -30,15 +30,24 @@ const TopicListItem = ({ childListItem }) => {
 
   return (
     <Row>
-      {childListItem.map((childrenItem) => (
-        <Nav.Link
-          eventKey={childrenItem.id}
-          key={childrenItem.id}
-          onClick={() => filteredChildrenList(childrenItem)}
-        >
-          {childrenItem.name}
-        </Nav.Link>
-      ))}
+      <Nav.Link
+        eventKey={childListItem.id}
+        key={childListItem.id}
+        onClick={() => filteredChildrenList(childListItem)}
+      >
+        {childListItem.name}
+      </Nav.Link>
+      {isAddChild === true
+        ? childListItems.map((childrenItem) => (
+            <Nav.Link
+              eventKey={childrenItem.id}
+              key={childrenItem.id}
+              onClick={() => filteredChildrenList(childrenItem)}
+            >
+              {childrenItem.name}
+            </Nav.Link>
+          ))
+        : null}
     </Row>
   );
 };
