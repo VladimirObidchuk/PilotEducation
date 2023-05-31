@@ -1,0 +1,29 @@
+@import "font.scss";
+@import "./breakpoint.scss";
+@import "./color.scss";
+
+.header-card {
+  background: linear-gradient(
+      rgba(193, 227, 234, 0.647),
+      rgba(193, 227, 234, 0.647)
+    ),
+    url("../img/MI8UKR.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+@media (max-width: $xxl) {
+  .header-card {
+    background-size: contain;
+  }
+}
+@media (max-width: $xl) {
+}
+@media (max-width: $lg) {
+}
+@media (max-width: $md) {
+  .header-card {
+    background-repeat: repeat;
+    background-position: center;
+  }
+}

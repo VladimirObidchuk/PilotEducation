@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100&display=swap);
+
+$font1: "Montserrat", sans-serif;
+
+@mixin Montserrat_reg {
+  font-family: $font1;
+  font-weight: 400;
+}
+@mixin Montserrat_medium {
+  font-family: $font1;
+  font-weight: 500;
+}
+@mixin Montserrat_semibold {
+  font-family: $font1;
+  font-weight: 600;
+}
+@mixin Montserrat_bold {
+  font-family: $font1;
+  font-weight: 700;
+}

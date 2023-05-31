@@ -1,0 +1,33 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100&display=swap);
+.btn__cours {
+  width: 15%;
+  margin-top: 1%;
+}
+
+.card__header .btn-close {
+  background: transparent url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%230dcaf0%27%3e%3cpath d=%27M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z%27/%3e%3c/svg%3e") center/1em auto no-repeat;
+}
+.card__style {
+  justify-content: center;
+}
+.card__body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2%;
+  height: 10vh;
+  color: #0dcaf0;
+}
+.card__title {
+  color: #0dcaf0;
+}
+
+.accordion-button,
+.accordion-item,
+.accordion-button::after {
+  color: #0dcaf0;
+}
+
+.accordion-button::after {
+  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%230dcaf0%27%3e%3cpath fill-rule=%27evenodd%27 d=%27M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e");
+}/*# sourceMappingURL=TypeBar.css.map */

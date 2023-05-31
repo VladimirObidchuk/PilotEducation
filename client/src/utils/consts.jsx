@@ -1,0 +1,10 @@
+export const ADMIN_ROUTE = "/adminPage";
+export const LOGIN_ROUTE = "/login";
+export const REGISTRATION_ROUTE = "/registration";
+export const USER_ROUTE = "/user";
+export const EDUCATION_ROUTE = "/";
+export const COURS_ROUTE = "/coursPage";
+export const TEMA_ROUTE = "/topicTitle";
+export const STATISTIC_ROUTE = "/testResult";
+export const QUESTION_ROUTE = "/question";
+export const TESTING_ROUTE = "/testing";
