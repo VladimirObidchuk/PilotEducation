@@ -33,6 +33,7 @@ const TopicListItem = ({ childListItem }) => {
       {childListItem.map((childrenItem) => (
         <Nav.Link
           eventKey={childrenItem.id}
+          key={childrenItem.id}
           onClick={() => filteredChildrenList(childrenItem)}
         >
           {childrenItem.name}
