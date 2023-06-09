@@ -6,14 +6,9 @@ import TypeBar from "../components/TypeBar";
 
 const CoursPage = () => {
   const [currentCours, setCours] = useState("");
-  const [view, setView] = useState("");
 
   const handleBookWork = (currentCours) => {
     setCours(currentCours);
-  };
-
-  const handleTopicSelect = (view, filteredTopName) => {
-    setView(view);
   };
 
   return (
@@ -21,7 +16,7 @@ const CoursPage = () => {
       <TypeBar onClick={handleBookWork} />
       <Row>
         <Col md={4} className="mt-2">
-          <TopicList currentCours={currentCours} onClick={handleTopicSelect} />
+          <TopicList currentCours={currentCours} />
         </Col>
         <Col md={8} className="mt-2"></Col>
       </Row>

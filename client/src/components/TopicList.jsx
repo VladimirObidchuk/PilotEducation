@@ -1,70 +1,59 @@
 import React, { useContext, useState } from "react";
-import { Nav, Row } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 import { Context } from "../index";
 import { observer } from "mobx-react-lite";
-import TopicListItem from "./TopicListItem";
+// import TopicListItem from "./TopicListItem";
 
-const TopicList = observer(({ currentCours }) => {
+const TopicTree = observer(({ currentCours }) => {
   const { coursEducation } = useContext(Context);
-  const [isAddChild, setIsAddChild] = useState(false);
-  const [childListItem, setChildListItem] = useState("");
+  const rootTopics = coursEducation.topic.filter(
+    (topic) => topic.parentId === null && topic.courseId === currentCours.id
+  );
 
-  const filteredChildrenList = (isChild) => {
-    const childListItem = coursEducation.topic.filter(
-      (childList) =>
-        childList.courseId === isChild.courseId &&
-        childList.parentId === isChild.id
+  const TopicItem = ({ topic }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleClick = () => {
+      setIsOpen(!isOpen);
+    };
+
+    return (
+      <React.Fragment>
+        <Nav.Link onClick={handleClick} key={topic.id} eventKey={topic.id}>
+          {topic.name}
+        </Nav.Link>
+        {isOpen && (
+          <Nav className="d-flex flex-column" style={{ marginLeft: 10 }}>
+            <TopicList parentId={topic.id} />
+          </Nav>
+        )}
+      </React.Fragment>
     );
-    isChildFind(childListItem);
-    console.log(childListItem);
-    return setChildListItem(childListItem);
   };
-  const isChildFind = (childListItem) => {
-    if (childListItem.length > 0) {
-      console.log(isAddChild);
-      return setIsAddChild(true);
-    }
-    return setIsAddChild(false);
+
+  const TopicList = ({ parentId }) => {
+    const { coursEducation } = useContext(Context);
+    const topics = coursEducation.topic.filter(
+      (topic) =>
+        topic.parentId === parentId && topic.courseId === currentCours.id
+    );
+
+    return (
+      <>
+        {topics.map((topic) => (
+          <TopicItem topic={topic} key={topic.id} />
+        ))}
+      </>
+    );
   };
 
   return (
     <Nav className="d-flex flex-column">
-      {coursEducation.topic
-        .filter(
-          (filteredTopList) =>
-            filteredTopList.courseId === currentCours.id &&
-            filteredTopList.parentId === null
-        )
-        .map((filteredTopItem) => {
-          return (
-            <Row key={filteredTopItem.id}>
-              <Nav.Link
-                onClick={() => filteredChildrenList(filteredTopItem)}
-                eventKey={filteredTopItem.id}
-              >
-                {filteredTopItem.name}
-              </Nav.Link>
-              <TopicListItem
-                childListItem={childListItem}
-                key={childListItem.id}
-                eventKey={childListItem.id}
-              />
-            </Row>
-          );
-        })}
+      {rootTopics.map((topic) => (
+        <TopicItem topic={topic} key={topic.id} />
+      ))}
     </Nav>
   );
 });
 
-export default TopicList;
-
-/* <TopicListItem filteredTopChild={filteredTopChild} /> */
-
-// {isChildrenGroup.map((childrenItem) => (
-//   <Row>
-//     <Nav.Link key={childrenItem.id}>{childrenItem.name}</Nav.Link>
-//   </Row>
-// ))}
-{
-  /* <TopicListItem childListItem={childListItem} /> */
-}
+export default TopicTree;
