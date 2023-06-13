@@ -8,16 +8,16 @@ const TopicInfo = ({ infoTopic }) => {
   return (
     <Row>
       {coursEducation.topicInfo
-        .filter((filteredTopItem) => filteredTopItem.topicId === infoTopic.id)
+        .filter((filteredTopItem) => filteredTopItem.topicId === infoTopic.id) // Используйте infoTopic.id вместо infoTopic
         .map((filteredTopItem) => {
           return (
-            <Card style={{ border: "none" }} key={infoTopic.id}>
-              <Card.Body key={filteredTopItem.id}>
+            <Card style={{ border: "none" }} key={filteredTopItem.id}>
+              <Card.Body>
                 <Card.Title style={{ textAlign: "center" }}>
                   {infoTopic.name}
                 </Card.Title>
                 <Card.Text>{filteredTopItem.text}</Card.Text>
-                <CardImg src={filteredTopItem.image}></CardImg>
+                <CardImg src={filteredTopItem.image} />
               </Card.Body>
             </Card>
           );
