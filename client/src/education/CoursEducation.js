@@ -39,7 +39,6 @@ export default class CoursEducation {
         image:
           "https://media.slovoidilo.ua/media/infographics/14/139998/inflyacziya-v-ukrayini_ru_large.jpg",
         topicId: 1,
-        parentId: 1,
       },
       {
         id: 2,
