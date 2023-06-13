@@ -1,58 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Nav } from "react-bootstrap";
 import { Context } from "../index";
 import { observer } from "mobx-react-lite";
+import TopicItem from "./TopicItem";
 
-const TopicTree = observer(({ currentCours, onClick }) => {
+const TopicTree = observer(({ currentCours, onItemClick }) => {
   const { coursEducation } = useContext(Context);
+
   const rootTopics = coursEducation.topic.filter(
     (topic) => topic.parentId === null && topic.courseId === currentCours.id
   );
 
-  const TopicItem = ({ topic, onClick }) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const handleClick = () => {
-      setIsOpen(!isOpen);
-      onClick(topic); // Передаем topic.id в функцию обратного вызова onClick
-    };
-
-    return (
-      <React.Fragment>
-        <Nav.Link onClick={handleClick} key={topic.id} eventKey={topic.id}>
-          {topic.name}
-        </Nav.Link>
-        {isOpen && (
-          <Nav className="d-flex flex-column ml-3">
-            <TopicList parentId={topic.id} onClick={onClick} />{" "}
-            {/* Передаем onClick в компонент TopicList */}
-          </Nav>
-        )}
-      </React.Fragment>
-    );
-  };
-
-  const TopicList = ({ parentId, onClick }) => {
-    const topics = coursEducation.topic.filter(
-      (topic) =>
-        topic.parentId === parentId && topic.courseId === currentCours.id
-    );
-    return (
-      <>
-        {topics.map((topic) => (
-          <TopicItem
-            topic={topic}
-            key={topic.id}
-            onClick={onClick}
-          /> /* Передаем onClick в компонент TopicItem */
-        ))}
-      </>
-    );
-  };
-
-  const handleTopicClick = (topicId) => {
+  const handleTopicClick = (topic) => {
     // Действия при клике на topic.id
-    onClick(topicId);
+    onItemClick(topic);
   };
 
   return (
@@ -61,9 +22,8 @@ const TopicTree = observer(({ currentCours, onClick }) => {
         <TopicItem
           topic={topic}
           key={topic.id}
-          onClick={
-            handleTopicClick
-          } /* Передаем onClick в компонент TopicItem */
+          onItemClick={handleTopicClick}
+          currentCours={currentCours}
         />
       ))}
     </Nav>

@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Nav } from "react-bootstrap";
 import TopicList from "./TopicList";
 
-const TopicItem = ({ topic, onClick, currentCours }) => {
+const TopicItem = ({ topic, onItemClick, currentCours }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
+    //   setIsOpen((prevState) => !prevState);
     setIsOpen(!isOpen);
-    onClick(topic.id); // Передаем topic.id в функцию обратного вызова onClick
+    onItemClick(topic); // Передаем topic.id в функцию обратного вызова onClick
   };
 
   return (
@@ -17,7 +18,11 @@ const TopicItem = ({ topic, onClick, currentCours }) => {
       </Nav.Link>
       {isOpen && (
         <Nav className="d-flex flex-column ml-3">
-          <TopicList parentId={topic.id} currentCours={currentCours} />
+          <TopicList
+            parentId={topic.id}
+            onItemClick={onItemClick}
+            currentCours={currentCours}
+          />
         </Nav>
       )}
     </React.Fragment>

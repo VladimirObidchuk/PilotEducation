@@ -11,7 +11,7 @@ const TopicInfo = ({ infoTopic }) => {
         .filter((filteredTopItem) => filteredTopItem.topicId === infoTopic.id)
         .map((filteredTopItem) => {
           return (
-            <Card style={{ border: "none" }}>
+            <Card style={{ border: "none" }} key={infoTopic.id}>
               <Card.Body key={filteredTopItem.id}>
                 <Card.Title style={{ textAlign: "center" }}>
                   {infoTopic.name}

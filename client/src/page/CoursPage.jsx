@@ -21,7 +21,7 @@ const CoursPage = () => {
       <TypeBar onClick={handleBookWork} />
       <Row>
         <Col md={2} className="mt-2">
-          <TopicTree currentCours={currentCours} onClick={setItemInfo} />
+          <TopicTree currentCours={currentCours} onItemClick={setItemInfo} />
         </Col>
         <Col md={10} className="mt-2">
           <TopicInfo infoTopic={infoTopic} />
